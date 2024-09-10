@@ -1,24 +1,32 @@
-import Navbar from "./components/navbar/navbar";
-
-
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Navbar from './components/navbar/navbar';
+import Home from './pages/Home';
+import Seccion from './pages/Seccion';
+import Favoritos from './pages/Favoritos';
+import Detalle from './pages/Detalle';
+import Resultados from './pages/Resultados';
+import Error404 from './components/Error404/Error404';
 
 function App() {
   return (
-    <>
-     < Navbar />
-     <h1>My App in React</h1>
-     <main>
-
-        <h3> Superheroes
-        </h3>
-      
-
-     </main>
-    <footer>
+    <Router>
+      <Navbar />
+      <h1>My App in React</h1>
+      <main>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/Seccion/:id" component={Seccion} />
+          <Route path="/Favoritos" component={Favoritos} />
+          <Route path="/Resultados" component={Resultados} />
+          <Route path="/Detalle/:id" component={Detalle} />
+          <Route component={Error404} />
+        </Switch>
+      </main>
+      <footer>
         <p>Copyright © Dashboard 2022</p>
-    </footer>
-    </>
-    
+      </footer>
+    </Router>
   );
 }
 
