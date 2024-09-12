@@ -7,6 +7,7 @@ class Home extends Component {
     super(props);
     this.state = {
       movies: [],
+      section: null,
     };
   }
 
@@ -15,18 +16,18 @@ class Home extends Component {
       .then((response) => response.json())
       .then((data) => {
         console.log(data.results)
-        this.setState({ movies: data.results });
+        this.setState({ movies: data.results, section: "peliculaPopular"});
       })
       .catch((e) => console.log(e));
   }
 
 
   render() {
-
+    console.log(this.state.movies)
     return (
       <div>
         <h1>Populares</h1>
-        {this.state.movies.map((pelicula) => (<PeliculasHome key={pelicula.id} description={pelicula.overview}  title={pelicula.title} img={pelicula.poster_path} />))}
+        {this.state.movies.map((pelicula) => (<PeliculasHome key={pelicula.id} id={pelicula.id} description={pelicula.overview}  title={pelicula.title} img={pelicula.poster_path} section={this.state.section} />))}
       </div>
     );
   }

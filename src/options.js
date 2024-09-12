@@ -2,6 +2,6 @@ export const options = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer e49603c6bbe4b318b8fbec1efdaa1adb' 
+      Authorization: 'Bearer 8ba8bbe7dfab5ab5da50fbbbaf3e12a2' 
     }
   };
