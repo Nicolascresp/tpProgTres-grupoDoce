@@ -1,18 +1,21 @@
 import "./navbar.css"
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 const Navbar = () => {
-    return(
+    return (
 
-<nav>
-        <ul className="main-nav">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/favoritos">favoritos</Link></li>
+        <nav className="mainnav">
+            <ul className="nav">
+                <li><Link to="/">HOME</Link></li>
+                <li><Link to="/">FAVORITOS</Link></li>
+                <li><Link to="/">VER MAS</Link></li>
+            </ul>
 
-        </ul>
-        <ul class="user">
-            <li>Nombre usuario <img src="./img/user.jpg" alt="" /></li>
-        </ul>
-    </nav>
+            <form action="" method="GET" className="form">
+                <input type="text" name="" placeholder="Buscar Peliculas" />
+                    <button type="submit">Buscar</button>
+            </form>
+
+        </nav>
     )
 }
 

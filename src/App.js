@@ -12,8 +12,11 @@ import Error404 from './components/Error404/Error404';
 function App() {
   return (
     <Router>
-      
-      <Navbar />
+
+      <header className='header'>
+        <img src='/img/logo.jpg' alt='logo' className='logo'/>
+        <Navbar />
+      </header>
 
       <main>
         <Switch>
@@ -25,7 +28,7 @@ function App() {
           <Route component={Error404} />
         </Switch>
       </main>
-      <footer className = "footer">
+      <footer className="footer">
         <ul>
           <li>Gregorio Bonardi</li>
           <li>Bautista Juarez</li>

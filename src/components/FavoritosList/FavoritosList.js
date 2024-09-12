@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FavoritosCard from '../FavoritosCard/FavoritosCard';  
+import FavoritosCard from "../FavoritosCard/FavoritosCard"
 import "./FavoritosList.css"
 
 class FavoritosList extends Component {

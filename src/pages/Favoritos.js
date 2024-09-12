@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import FavoritosList from "../components/FavoritosList/FavoritosList"; // Asegúrate de que la ruta sea correcta
+import FavoritosList from "../components/FavoritosList/FavoritosList"; 
 
 class Favoritos extends Component {
   constructor(props) {

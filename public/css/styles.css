@@ -8,14 +8,28 @@ a {
     text-decoration: none;
     color: #000;
 }
+
+.header {
+
+    background-color: #dedede;
+    height: auto;
+    display: flex;
+
+}
+
+.logo {
+    border-radius: 100%;
+    height: 150px;
+    padding: 20px;
+
+}
+
 body {
     font-family: Nunito;
     margin: 0;
     background-color: #eee;
 }
 
-
-/* footer */
 footer {
     background-color: #dedede;
     text-align: center;
