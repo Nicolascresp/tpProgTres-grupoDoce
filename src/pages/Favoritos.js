@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import FavoritosList from "../components/FavoritosList/FavoritosList"; // Asegúrate de que la ruta sea correcta
+import FavoritosList from "../components/FavoritosList/FavoritosList"
 
 class Favoritos extends Component {
   constructor(props) {
@@ -43,7 +43,7 @@ class Favoritos extends Component {
     })
       .then((response) => response.json())
       .then(() => {
-        this.fetchFavorites(); // Actualiza la lista de favoritos después de agregar uno nuevo
+        this.fetchFavorites(); 
       })
       .catch((e) => this.setState({ error: e.message || "Error adding favorite" }));
   };

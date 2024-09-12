@@ -38,7 +38,7 @@ class Detalle extends Component {
       favorite: !this.state.isFavorite,
     };
 
-    fetch(`https://api.themoviedb.org/3/account/${accountId}/favorite?api_key=${apiKey}&session_id=<SESSION_ID>`, {
+    fetch(`https://api.themoviedb.org/3/account/${accountId}/favorite?api_key=8ba8bbe7dfab5ab5da50fbbbaf3e12a2&session_id=<SESSION_ID>`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -66,11 +66,11 @@ class Detalle extends Component {
       <div>
         {isMovie ? (
           <DetallePelicula
-            details={details}
+            details={details} isMovie={isMovie}
           />
         ) : (
           <DetalleSerie
-            details={details}
+            details={details} isMovie={isMovie}
           />
         )}
       </div>
