@@ -8,11 +8,13 @@ import Detalle from './pages/Detalle';
 import Resultados from './pages/Resultados';
 import Error404 from './components/Error404/Error404';
 
+
 function App() {
   return (
     <Router>
+      
       <Navbar />
-      <h1>My App in React</h1>
+
       <main>
         <Switch>
           <Route path="/" exact component={Home} />
@@ -23,8 +25,12 @@ function App() {
           <Route component={Error404} />
         </Switch>
       </main>
-      <footer>
-        <p>Copyright © Dashboard 2022</p>
+      <footer className = "footer">
+        <ul>
+          <li>Gregorio Bonardi</li>
+          <li>Bautista Juarez</li>
+          <li>Nicolas Crespo</li>
+        </ul>
       </footer>
     </Router>
   );
