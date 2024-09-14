@@ -10,9 +10,10 @@ class PeliculasPopularesCard extends Component {
     return (
       <section className='peliculas-pop-card'>
         <article>
-          <h1 className='titulo'>{title}</h1>
+          
+          <Link to={`/Detalle/${id}/${section}`} className='titulo'><h1 >{title}</h1></Link>
           <img src={imageUrl} alt={title} />
-          <Link  className = "verdesc" > Descripción</Link>
+          <p className = "verdesc">Descripción:</p>
           <p>{description}</p>
           <Link to={`/Detalle/${id}/${section}`} className = "verdesc" >Ver Detalle</Link>
 

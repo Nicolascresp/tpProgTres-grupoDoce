@@ -9,9 +9,11 @@
 .textoError {
     text-align: center; 
     font-size: 45px;
+    font-weight: bold;
 }
 
 .linkError {
     color: blue; 
     text-decoration: underline;
+    font-weight: bold;
 }

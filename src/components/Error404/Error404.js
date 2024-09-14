@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Error404.css'; 
+import './Error404.css' 
 
 class Error404 extends Component {
     render() {
