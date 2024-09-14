@@ -1,0 +1,17 @@
+.imagenError {
+ 
+    width: 55%; 
+    margin: 0 auto; 
+    display: block; 
+    margin-bottom: 20px; 
+}
+
+.textoError {
+    text-align: center; 
+    font-size: 45px;
+}
+
+.linkError {
+    color: blue; 
+    text-decoration: underline;
+}
