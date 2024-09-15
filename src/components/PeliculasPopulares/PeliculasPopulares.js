@@ -6,8 +6,7 @@ class PeliculasPopulares extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies: [],
-      section: null,
+      movies: []
     };
   }
 
@@ -16,7 +15,7 @@ class PeliculasPopulares extends Component {
       .then((response) => response.json())
       .then((data) => {
         console.log(data.results)
-        this.setState({ movies: data.results, section: "peliculaPopular"});
+        this.setState({ movies: data.results});
       })
       .catch((e) => console.log(e));
   }
@@ -27,7 +26,7 @@ class PeliculasPopulares extends Component {
     return (
       <div className='peliculas-pop'>
 
-      {this.state.movies.slice(0,4).map((pelicula) => (<PeliculasPopularesCard key={pelicula.id} id={pelicula.id} description={pelicula.overview}  title={pelicula.title} img={pelicula.poster_path} section={this.state.section} />))}
+      {this.state.movies.slice(0,4).map((pelicula) => (<PeliculasPopularesCard key={pelicula.id} id={pelicula.id} description={pelicula.overview}  title={pelicula.title} img={pelicula.poster_path}  />))}
       </div>
     );
   }

@@ -24,7 +24,7 @@ function App() {
           <Route path="/Section/:id" component={Seccion} />
           <Route path="/Favoritos" component={Favoritos} />
           <Route path="/Resultados" component={Resultados} />
-          <Route path="/Detalle/:id/:section" component={Detalle} />
+          <Route path="/Detalle/:id" component={Detalle} />
           <Route path ="" component={Error404} />
         </Switch>
       </main>

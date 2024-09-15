@@ -24,7 +24,7 @@ class TopRatedMovies extends Component {
     return (
       <div className='peliculas-pop'>
 
-        {this.state.movies.slice(0, 4).map((pelicula) => (<TopRatedMoviesCard key={pelicula.id} id={pelicula.id} description={pelicula.overview} title={pelicula.title} img={pelicula.poster_path} section={this.state.section} />))}
+        {this.state.movies.slice(0, 4).map((pelicula) => (<TopRatedMoviesCard key={pelicula.id} id={pelicula.id} description={pelicula.overview} title={pelicula.title} img={pelicula.poster_path}  />))}
       </div>
     );
   }
