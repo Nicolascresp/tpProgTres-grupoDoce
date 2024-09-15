@@ -26,7 +26,8 @@ class PeliculasPopulares extends Component {
     console.log(this.state.movies)
     return (
       <div className='peliculas-pop'>
-        {this.state.movies.map((pelicula) => (<PeliculasPopularesCard key={pelicula.id} id={pelicula.id} description={pelicula.overview}  title={pelicula.title} img={pelicula.poster_path} section={this.state.section} />))}
+
+      {this.state.movies.slice(0,4).map((pelicula) => (<PeliculasPopularesCard key={pelicula.id} id={pelicula.id} description={pelicula.overview}  title={pelicula.title} img={pelicula.poster_path} section={this.state.section} />))}
       </div>
     );
   }

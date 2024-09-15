@@ -4,6 +4,8 @@
     border-radius: 8px; 
     overflow: hidden; 
     margin-bottom: 20px; 
+
+    text-align: center;
 }
 
 
@@ -35,4 +37,26 @@
     border-radius: 7px; 
     
     font-weight: bold;
+}
+
+.showDescription {
+    display: block;
+
+}
+
+.hideDescription {
+    display: none;
+
+}
+
+.buttonDesc {
+
+    background-color: #333 ; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    padding: 10px; 
+    font-size: 16px; 
+    margin-top: 10px; /* Espacio encima del botón */
+    margin : auto 0
 }
