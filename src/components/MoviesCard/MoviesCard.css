@@ -1,0 +1,50 @@
+.showDescription {
+    display: block;
+    padding: 10px;
+}
+
+.hideDescription {
+    display: none;
+}
+
+.movie-card {
+    width: 250px;
+    height: auto;
+    margin: 15px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.titulo h1 {
+    font-size: 18px;
+    color: white;
+    background-color: grey;
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+}
+
+.movie-card img {
+    width: 100%;
+    height: auto;
+}
+
+.buttonDesc {
+    width: 100%;
+    padding: 10px ;
+    background-color: grey;
+    color: white;
+    border: none;
+}
+
+
+.verdesc {
+    display: block;
+    background-color: #0056b3;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    text-decoration: none;
+
+}

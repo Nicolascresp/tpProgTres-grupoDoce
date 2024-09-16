@@ -4,7 +4,6 @@
     border-radius: 8px; 
     overflow: hidden; 
     margin-bottom: 20px; 
-
     text-align: center;
 }
 
@@ -27,7 +26,6 @@
 }
 
 .verdesc {
-    display: block; 
     text-align: center; 
     padding: 10px; 
     font-size: 1rem; 
@@ -53,7 +51,6 @@
 
     background-color: #333 ; 
     color: white; 
-    border: none; 
     border-radius: 5px; 
     padding: 10px; 
     font-size: 16px; 

@@ -1,49 +1,45 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import MoviesCard from '../MoviesCard/MoviesCard';
 
 class HomeMovies extends Component {
   constructor(props) {
-    super(props)
-
+    super(props);
     this.state = {
-      description: this.props.description,
-      VerDesc: false
-    }
-
+      Movies: [],
+     
+    };
   }
 
-  verdescripcion() {
-    this.setState({
-      VerDesc: !this.state.VerDesc
-    });
+  componentDidMount() {
+    fetch(this.props.url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.results);
+        this.setState({ Movies: data.results });
+      })
+      .catch((e) => console.log(e));
   }
 
-  render() {
-    const { title, img, id} = this.props;
-    const imageUrl = `https://image.tmdb.org/t/p/w500${img}`;
+  render() { 
 
     return (
-      <section className='peliculas-pop-card'>
-        <article>
-          <Link to={`/Detalle/${id}`} className='titulo'><h1>{title}</h1></Link>
-          <img src={imageUrl} alt={title} />
+    <>
+    
+     {this.state.Movies.slice(0, 5).map((pelicula) => (
+          <MoviesCard
+            key={pelicula.id}
+            id={pelicula.id}
+            description={pelicula.overview}
+            title={pelicula.title}
+            img={pelicula.poster_path}
 
-          <button onClick={() => this.verdescripcion()} className="buttonDesc">
-            {this.state.VerDesc ? "Ocultar Descripción" : "Descripción"}
-          </button>
-
-          <p className={this.state.VerDesc ? "showDescription" : "hideDescription"} >
-            {this.props.description}
-          </p>
-
-          <Link to={`/Detalle/${id}`} className="verdesc">Ver Detalle</Link>
-
-
-        </article>
-      </section>
+          />
+        ))}
+    </>        
+       
+    
     );
   }
 }
 
 export default HomeMovies;
-

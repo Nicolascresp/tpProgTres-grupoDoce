@@ -9,11 +9,11 @@ li {
 
 a {
     text-decoration: none;
-    color: #000;
+    color: white;
 }
 
 .header {
-    background-color: #dedede;
+    background-color: #0056b3;
     height: auto;
     display: flex;
     align-items: center;
@@ -35,10 +35,10 @@ body {
 }
 
 footer {
-    background-color: #dedede;
+    background-color: #0056b3;
     text-align: center;
     padding: 40px 0;
-    color: #666;
+    color: white;
     bottom: 0;
     width: 100%;
 }
@@ -47,18 +47,11 @@ footer {
     display: flex;
 }
 
-.titulo-peliculaspop {
-    font-size: 2rem;
-    color: #333;
-    margin-left: 25px;
-}
-
-.ver-todas-button {
-    padding: 10px;
-    margin: 20px;
-    font-size: 1rem;
-    color: white;
-    background-color: #333;
-    border-radius: 5px;
+.home-movies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    padding: 20px;
+    background-color: #f8f9fa;
 }
 

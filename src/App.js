@@ -14,7 +14,7 @@ function App() {
     <Router>
 
       <header className='header'>
-        <img src='/img/logo.jpg' alt='logo' className='logo'/>
+        <img src='/img/WHEELWISE.png' alt='logo' className='logo'/>
         <Navbar />
       </header>
 
