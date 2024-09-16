@@ -3,7 +3,7 @@ import "./DetallePelicula.css"
 
 class DetallePelicula extends Component {
   render() {
-    const { details, handleAddToFavorites } = this.props;
+    const { details, handleAddToFavorites, isFavorite } = this.props;
 
     return (
       <div className="detalle-container">
@@ -18,7 +18,7 @@ class DetallePelicula extends Component {
         <p><strong>Sinopsis:</strong> {details.overview}</p>
         <p className="genres"><strong>Géneros:</strong> {details.genres.map((genre) => genre.name).join(', ')}</p>
         <button onClick={handleAddToFavorites}>
-          Agregar a Favoritos
+          {isFavorite ? 'Borrar de favoritos' : 'Agregar a Favoritos'}
         </button>
       </div>
     );

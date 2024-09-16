@@ -25,29 +25,21 @@ class Detalle extends Component {
 
   handleAddToFavorites = () => {
     const { id } = this.props.match.params;
-    const apiKey = '8ba8bbe7dfab5ab5da50fbbbaf3e12a2';
-    const accountId = '21512708'; 
-    const requestBody = {
-      media_type: 'movie',
-      media_id: id,
-      favorite: !this.state.isFavorite,
-    };
-
-    fetch(`https://api.themoviedb.org/3/account/${accountId}/favorite?api_key=8ba8bbe7dfab5ab5da50fbbbaf3e12a2&session_id=<SESSION_ID>`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify(requestBody),
-    })
-      .then((response) => response.json())
-      .then(() => {
-        this.setState((prevState) => ({ isFavorite: !prevState.isFavorite }));
-      })
-      .catch((e) => console.log(e));
+    let favoritos = JSON.parse(localStorage.getItem('favorites')) || [];
+    if (favoritos.includes(id)) {
+        favoritos = favoritos.filter(favoriteId => favoriteId !== id);
+        localStorage.removeItem('favorites')
+        localStorage.setItem('favorites', JSON.stringify(favoritos));
+    } else {
+        favoritos.push(id);
+        localStorage.removeItem('favorites')
+        localStorage.setItem('favorites', JSON.stringify(favoritos));
+    }
+    this.setState((prevState) => {
+      return { isFavorite: !prevState.isFavorite };
+    });
+    
   };
-
   render() {
     const { details } = this.state;
 
