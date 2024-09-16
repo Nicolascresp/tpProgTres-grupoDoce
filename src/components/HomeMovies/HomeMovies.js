@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import "./PeliculasPopularesCard.css"
 
-class PeliculasPopularesCard extends Component {
+class HomeMovies extends Component {
   constructor(props) {
     super(props)
 
@@ -46,4 +45,5 @@ class PeliculasPopularesCard extends Component {
   }
 }
 
-export default PeliculasPopularesCard;
+export default HomeMovies;
+

@@ -12,7 +12,7 @@ const Navbar = () => {
 
             <form action="" method="GET" className="form">
                 <input type="text" name="" placeholder="Buscar Peliculas" />
-                    <button type="submit">Buscar</button>
+                <button type="submit">Buscar</button>
             </form>
 
         </nav>

@@ -1,9 +1,12 @@
-ul,ol {
+ul,
+ol {
     padding: 0;
 }
+
 li {
-    list-style-type:none;
+    list-style-type: none;
 }
+
 a {
     text-decoration: none;
     color: #000;
@@ -11,18 +14,18 @@ a {
 
 .header {
     background-color: #dedede;
-    height: auto; 
+    height: auto;
     display: flex;
-    align-items: center; 
-    justify-content: space-around; 
-    padding: 0 10px; 
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 10px;
 }
 
 .logo {
-    border-radius: 50%; 
+    border-radius: 50%;
     height: 100px;
-    padding: 10px; 
-    object-fit: cover; 
+    padding: 10px;
+    object-fit: cover;
 }
 
 body {
@@ -42,19 +45,20 @@ footer {
 
 .header-container {
     display: flex;
-  }
-  
-  .titulo-peliculaspop {
+}
+
+.titulo-peliculaspop {
     font-size: 2rem;
     color: #333;
     margin-left: 25px;
-  }
-  
-  .ver-todas-button {
+}
+
+.ver-todas-button {
     padding: 10px;
     margin: 20px;
     font-size: 1rem;
     color: white;
     background-color: #333;
     border-radius: 5px;
-  }
+}
+
