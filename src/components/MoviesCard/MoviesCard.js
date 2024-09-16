@@ -6,7 +6,7 @@ class MoviesCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        VerDesc: false,
+      VerDesc: false,
     };
   }
 
@@ -22,24 +22,31 @@ class MoviesCard extends Component {
     const imageUrl = `https://image.tmdb.org/t/p/w500${img}`;
 
     return (
-        <article className='movie-card'>
-          <Link to={`/Detalle/${id}`} className='titulo'>
-            <h1>{title}</h1>
-          </Link>
-          <img src={imageUrl} alt={title} />
+      
+      <article className='movie-card'>
+        <Link to={`/Detalle/${id}`} className='titulo'>
+          <h1>{title}</h1>
+        </Link>
+        <img src={imageUrl} alt={title} />
 
-          <button onClick={() => this.verdescripcion ()} className='buttonDesc'>
-            {this.state.VerDesc ? 'Ocultar Descripción' : 'Descripción'}
-          </button>
+        <button onClick={() => this.verdescripcion()} className='buttonDesc'>
+          {this.state.VerDesc ? 'Ocultar Descripción' : 'Descripción'}
+        </button>
 
-          <p className={this.state.VerDesc ? 'showDescription' : 'hideDescription'}>
-            {this.props.description}
-          </p>
+        <p className={this.state.VerDesc ? 'showDescription' : 'hideDescription'}>
+          {this.props.description}
+        </p>
 
-          <Link to={`/Detalle/${id}`} className='verdesc'>
-            Ver Detalle
-          </Link>
-        </article>
+        <Link to={`/Detalle/${id}`} className='verdesc'>
+          Ver Detalle
+        </Link>
+
+        <button className='buttonFavs'>
+          AGREGAR A FAVORITOS  ⭐
+        </button>
+
+      </article>
+
     );
   }
 }

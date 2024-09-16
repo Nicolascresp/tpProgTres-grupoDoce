@@ -1,6 +1,9 @@
 .showDescription {
     display: block;
-    padding: 10px;
+    padding: 15px;
+    background-color: #0056b3;
+    color: white;
+    font-size: 1rem;
 }
 
 .hideDescription {
@@ -28,6 +31,7 @@
 .movie-card img {
     width: 100%;
     height: auto;
+    margin-bottom: 0;
 }
 
 .buttonDesc {
@@ -47,4 +51,13 @@
     padding: 10px 0;
     text-decoration: none;
 
+}
+
+.buttonFavs {
+
+    width: 100%;
+    padding: 10px ;
+    background-color: rgb(250, 250, 18);
+    color: black;
+    border: none;
 }
