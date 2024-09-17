@@ -36,7 +36,6 @@ class Favoritos extends Component {
     console.log(favoriteIds);
     return (
       <div>
-        <h2>Mis Favoritos</h2>
         {error && <p>{error}</p>}
         <FavoritosList
           favorites={favoriteIds}

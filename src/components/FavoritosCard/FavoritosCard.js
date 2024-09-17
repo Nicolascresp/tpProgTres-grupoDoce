@@ -16,6 +16,11 @@ class FavoritosCard extends Component {
           <button className="favoritos-card-button" onClick={() => onRemoveFavorite(id)}>
             Eliminar de Favoritos
           </button>
+          <Link to={`/detalle/${id}`}>
+            <button className="favoritos-card-detail-button">
+              Ver Detalle
+            </button>
+          </Link>
         </div>
       </li>
     );

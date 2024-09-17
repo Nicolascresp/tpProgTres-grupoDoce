@@ -31,7 +31,7 @@ class FavoritosList extends Component {
           .then(response => response.ok ? response.json() : Promise.reject('Error fetching data'))
           .catch(error => this.setState(prevState => ({
             error: error.message || 'Error fetching data',
-            movieDetails: prevState.movieDetails // Preserve existing details on error
+            movieDetails: prevState.movieDetails 
           })))
       )
     )
@@ -42,7 +42,7 @@ class FavoritosList extends Component {
   render() {
     const { movieDetails, error } = this.state;
     const { onRemoveFavorite } = this.props;
-    console.log(movieDetails)
+    console.log(movieDetails);
 
     return (
       <div>
@@ -54,14 +54,15 @@ class FavoritosList extends Component {
           </>
         ) : (
           <>
-            <h2>Lista de tus Series y Películas favoritas</h2>
-            <ul>
+            <h2 className="peliculasFavoritosTitulo">Lista de tus Películas favoritas</h2>
+            <ul className="favoritos-list">
               {movieDetails.map((movie) => (
-                <FavoritosCard
-                  key={movie.id}
-                  favorite={movie}
-                  onRemoveFavorite={onRemoveFavorite}
-                />
+                <li key={movie.id} className="favoritos-item">
+                  <FavoritosCard
+                    favorite={movie}
+                    onRemoveFavorite={onRemoveFavorite}
+                  />
+                </li>
               ))}
             </ul>
           </>
@@ -72,6 +73,3 @@ class FavoritosList extends Component {
 }
 
 export default FavoritosList;
-
-
-
