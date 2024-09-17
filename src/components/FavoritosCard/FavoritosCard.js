@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./FavoritosCard.css"
+import "./FavoritosCard.css";
 import { Link } from 'react-router-dom';
 
 class FavoritosCard extends Component {
@@ -9,11 +9,11 @@ class FavoritosCard extends Component {
     const imageUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
 
     return (
-      <li>
-        <div>
-          <img src={imageUrl} alt={title} style={{ width: '100px', height: '150px' }} />
-          <Link to={`/detalle/${id}`}>{title}</Link>
-          <button onClick={() => onRemoveFavorite(id)}>
+      <li className="favoritos-card">
+        <div className="favoritos-card-content">
+          <img className="favoritos-card-img" src={imageUrl} alt={title} />
+          <Link to={`/detalle/${id}`} className="favoritos-card-title">{title}</Link>
+          <button className="favoritos-card-button" onClick={() => onRemoveFavorite(id)}>
             Eliminar de Favoritos
           </button>
         </div>

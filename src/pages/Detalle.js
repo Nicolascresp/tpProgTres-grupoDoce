@@ -19,6 +19,10 @@ class Detalle extends Component {
       .then((response) => response.json())
       .then((data) => {
         this.setState({ details: data });
+
+        const favoritos = JSON.parse(localStorage.getItem('favorites')) || [];
+        const isFavorite = favoritos.includes(id);
+        this.setState({ isFavorite });
       })
       .catch((e) => console.log(e));
   }
@@ -26,22 +30,27 @@ class Detalle extends Component {
   handleAddToFavorites = () => {
     const { id } = this.props.match.params;
     let favoritos = JSON.parse(localStorage.getItem('favorites')) || [];
+
     if (favoritos.includes(id)) {
-        favoritos = favoritos.filter(favoriteId => favoriteId !== id);
-        localStorage.removeItem('favorites')
-        localStorage.setItem('favorites', JSON.stringify(favoritos));
+      favoritos = favoritos.filter(favoriteId => favoriteId !== id);
     } else {
-        favoritos.push(id);
-        localStorage.removeItem('favorites')
-        localStorage.setItem('favorites', JSON.stringify(favoritos));
+      favoritos.push(id);
     }
-    this.setState((prevState) => {
-      return { isFavorite: !prevState.isFavorite };
-    });
-    
+    if (localStorage.getItem("favorites")){
+      localStorage.removeItem('favorites');
+      localStorage.setItem('favorites', JSON.stringify(favoritos));
+    } else {
+      localStorage.setItem('favorites', JSON.stringify(favoritos));
+    }
+
+
+    this.setState((prevState) => ({
+      isFavorite: !prevState.isFavorite
+    }));
   };
+
   render() {
-    const { details } = this.state;
+    const { details, isFavorite } = this.state;
 
     if (!details) return <p>Cargando detalles...</p>;
 
@@ -50,7 +59,7 @@ class Detalle extends Component {
         <DetallePelicula
           details={details}
           handleAddToFavorites={this.handleAddToFavorites}
-          isFavorite={this.state.isFavorite}
+          isFavorite={isFavorite}
         />
       </div>
     );

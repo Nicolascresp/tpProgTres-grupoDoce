@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import HomeMovies from '../components/HomeMovies/HomeMovies';
 
 class Home extends Component {
-  constructor(props) {
-    super(props)
-  }
+
 
   render() {
 
