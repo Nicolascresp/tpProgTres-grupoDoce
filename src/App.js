@@ -7,6 +7,7 @@ import Favoritos from './pages/Favoritos';
 import Detalle from './pages/Detalle';
 import Resultados from './pages/Resultados';
 import Error404 from './components/Error404/Error404';
+import ResultadosBusqueda from './components/ResultadosBusqueda/ResultadosBusqueda';
 
 
 function App() {
@@ -25,7 +26,8 @@ function App() {
           <Route path="/Favoritos" component={Favoritos} />
           <Route path="/Resultados" component={Resultados} />
           <Route path="/Detalle/:id" component={Detalle} />
-          <Route path ="" component={Error404} />
+          <Route component={Error404} />
+          <Route path="/search" component={Resultados} />
         </Switch>
       </main>
       <footer className="footer">

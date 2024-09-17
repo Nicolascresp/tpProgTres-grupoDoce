@@ -1,22 +1,35 @@
 import React from 'react'
-import './SearchResults.css'
+import { Component } from 'react';
 
-class ResultadosBusqueda extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            query: '', 
-            results: [], 
-        };
+ class ResultadosBusqueda extends Component{
+
+    constructor(props){
+        super(props)
+        this.state={
+            query:""
+        }
+    }
+    handleInputChange(e){
+        this.setState({
+            query: e.target.value
+        })
     }
 
- ResultadosBusqueda = () => {
+    handleInputSubmit(){
+        this.props.history.push('/search', {query: this.state.query})
+    }
 
-    const {query} = this.state
+    render(){
+        return(
+            <div>
+                <input onChange={(e) =>this.handleInputChange(e) }
+                type= 'text' name= 'query' value = {this.state.query} />
+                <button onClick={() => this.handleInputSubmit() }
+                >Search Movie </button>
+            </div>
+        )
+    }
 
-  return (
-    <div>ResultadosBusqueda</div>
-  )
-}}
+}
 
 export default ResultadosBusqueda

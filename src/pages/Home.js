@@ -1,13 +1,28 @@
 import React, { Component } from 'react';
 import HomeMovies from '../components/HomeMovies/HomeMovies';
+import ResultadosBusqueda from '../components/ResultadosBusqueda/ResultadosBusqueda';
 
 class Home extends Component {
 
+  constructor(props){
+    super(props)
+  }
 
+
+  componentDidMount(){
+
+  }
+
+  handleRedirect(){
+    this.props.history.push('/search', {id:10})
+  }
+  
   render() {
 
     return (
       <>
+
+        <ResultadosBusqueda history={this.props.history} />
 
         <h2 className='titulo'> Peliculas Populares</h2>
 
