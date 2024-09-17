@@ -52,7 +52,6 @@ class Detalle extends Component {
   render() {
     const { details, isFavorite } = this.state;
 
-    if (!details) return <p>Cargando detalles...</p>;
 
     return (
       <div>
