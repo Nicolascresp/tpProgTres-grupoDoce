@@ -42,16 +42,15 @@ class FavoritosList extends Component {
   render() {
     const { movieDetails, error } = this.state;
     const { onRemoveFavorite } = this.props;
-    console.log(movieDetails);
 
     return (
       <div>
         {error && <p>Error al cargar películas: {error}</p>}
         {!movieDetails.length ? (
-          <>
-            <h2>Aún no has seleccionado tus series y películas favoritas.</h2>
-            <h4>¡No esperes más y empieza a configurar tu lista según tus gustos!</h4>
-          </>
+          <div className="empty-favorites-container">
+            <p className="empty-favorites-message">Aún no has seleccionado tus series y películas favoritas.</p>
+            <p className="empty-favorites-description">¡No esperes más y empieza a configurar tu lista según tus gustos!</p>
+          </div>
         ) : (
           <>
             <h2 className="peliculasFavoritosTitulo">Lista de tus Películas favoritas</h2>

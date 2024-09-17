@@ -13,10 +13,11 @@ class Favoritos extends Component {
   componentDidMount() {
     this.FavoritesFromLocalStorage();
   }
-
+  
   FavoritesFromLocalStorage = () => {
     try {
       const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      console.log("Initial favorites:", storedFavorites); 
       this.setState({ favoriteIds: storedFavorites });
     } catch (error) {
       this.setState({ error: "Error loading favorites from localStorage" });
@@ -24,16 +25,19 @@ class Favoritos extends Component {
   };
 
   handleRemoveFavorite = (id) => {
-    const updatedFavorites = this.state.favoriteIds.filter(favId => favId !== id);
+    const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    const updatedFavorites = storedFavorites.filter(favId => favId !== id.toString());
+    localStorage.removeItem("favorites")
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
     this.setState({ favoriteIds: updatedFavorites }, () => {
-      localStorage.removeItem("favorites");
-      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      console.log("Updated favorite IDs:", this.state.favoriteIds);
     });
   };
 
   render() {
     const { favoriteIds, error } = this.state;
-    console.log(favoriteIds);
+    console.log("Stored favorites:", JSON.parse(localStorage.getItem("favorites")));
+
     return (
       <div>
         {error && <p>{error}</p>}
