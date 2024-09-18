@@ -31,7 +31,7 @@ class Navbar extends Component {
             </ul>
 
             <form className="form" onSubmit={(e) => this.handleInputSubmit(e)}>
-                    <input type="text" name="query" placeholder="Buscar Peliculas" value={this.state.query}
+                    <input  className="input" type="text" name="query" placeholder="Buscar Peliculas" value={this.state.query}
                         onChange={(e) => this.handleInputChange(e)} 
                     />
                     <button type="submit">Buscar</button>

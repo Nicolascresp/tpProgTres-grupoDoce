@@ -21,12 +21,12 @@ import { Component } from 'react';
 
     render(){
         return(
-            <div>
-                <input onChange={(e) =>this.handleInputChange(e) }
+            <form className="form">
+                <input className = "input" onChange={(e) =>this.handleInputChange(e) }
                 type= 'text' name= 'query' value = {this.state.query} />
-                <button onClick={() => this.handleInputSubmit() }
+                <button className='buttonVermas' onClick={() => this.handleInputSubmit() }
                 >Search Movie </button>
-            </div>
+            </form>
         )
     }
 

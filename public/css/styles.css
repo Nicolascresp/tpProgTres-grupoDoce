@@ -69,4 +69,38 @@ footer {
     border-radius: 10px;
     font-size: 20px;    
     border : none;
+    display: block; 
+    
+    
 }
+
+.form {
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+    margin: 10px;
+}
+
+.input {
+
+  width: 300px; 
+  padding: 10px 15px;
+  border: 2px solid #ccc;
+  border-radius: 25px; 
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+.form button {
+    padding: 13px;
+    margin: 10px;
+    width: auto;
+    background-color: #007BFF; 
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  }
