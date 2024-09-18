@@ -1,28 +1,40 @@
 import React, { Component } from 'react';
-import "./DetallePelicula.css"
+import './DetallePelicula.css';
 
 class DetallePelicula extends Component {
-  render() {
-    const { details, handleAddToFavorites, isFavorite } = this.props;
+    render() {
+        const { details, handleAddToFavorites, isFavorite } = this.props;
 
-    return (
-      <div className="detalle-container">
-        <h2>{details.title}</h2>
-        <img
-          src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`}
-          alt={details.title}
-        />
-        <p><strong>Calificación:</strong> {details.vote_average}</p>
-        <p><strong>Fecha de estreno:</strong> {details.release_date}</p>
-        <p><strong>Duración:</strong> {details.runtime} minutos</p>
-        <p><strong>Sinopsis:</strong> {details.overview}</p>
-        <p className="genres"><strong>Géneros:</strong> {details.genres.map((genre) => genre.name).join(', ')}</p>
-        <button onClick={handleAddToFavorites}>
-          {isFavorite ? 'Borrar de favoritos' : 'Agregar a Favoritos'}
-        </button>
-      </div>
-    );
-  }
+        if (!details) {
+            return <p>Cargando...</p>;
+        }
+
+        const imageUrl = `https://image.tmdb.org/t/p/w500${details.poster_path}`;
+        const rating = details.vote_average ? details.vote_average.toFixed(1) : 'N/A';
+        const releaseDate = details.release_date || 'N/A';
+        const runtime = details.runtime ? `${details.runtime} minutos` : 'N/A';
+        const genres = details.genres ? details.genres.map(genre => genre.name).join(', ') : 'N/A';
+
+        return (
+            <div className="detalle-pelicula">
+                <h1 className="detalle-titulo">{details.title || details.name}</h1>
+                <img src={imageUrl} alt={details.title || details.name} className="detalle-imagen" />
+                <div className="detalle-info">
+                    <p><strong>Calificación:</strong> {rating}</p>
+                    <p><strong>Fecha de Estreno:</strong> {releaseDate}</p>
+                    {details.runtime && <p><strong>Duración:</strong> {runtime}</p>}
+                    {details.genres && <p><strong>Género:</strong> {genres}</p>}
+                    <p><strong>Sinópsis:</strong> {details.overview}</p>
+                </div>
+                <button 
+                    className={`detalle-favorito ${isFavorite ? 'favorito' : 'no-favorito'}`} 
+                    onClick={handleAddToFavorites}
+                >
+                    {isFavorite ? 'Quitar de Favoritos' : 'Agregar a Favoritos'}
+                </button>
+            </div>
+        );
+    }
 }
 
 export default DetallePelicula;

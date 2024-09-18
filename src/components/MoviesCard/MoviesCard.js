@@ -20,20 +20,23 @@ class MoviesCard extends Component {
 
   agregarFavoritos() {
 
-    const storage = localStorage.getItem("Favoritos")
+    const storage = localStorage.getItem("favorites")
+    console.log(
+      storage
+    );
 
     if (storage !== null) {
 
       const parsedArray = JSON.parse(storage)
       parsedArray.push(this.props.id)
       const stringArray = JSON.stringify(parsedArray)
-      localStorage.setItem("Favoritos", stringArray)
+      localStorage.setItem("favorites", stringArray)
 
 
     } else {
       const primerMovie = [this.props.id]
       const stringArray = JSON.stringify(primerMovie)
-      localStorage.setItem("Favoritos", stringArray)
+      localStorage.setItem("favorites", stringArray)
     }
 
     this.setState(
@@ -45,12 +48,12 @@ class MoviesCard extends Component {
   }
 
   sacarFavoritos() {
-    const storage = localStorage.getItem("Favoritos")
+    const storage = localStorage.getItem("favorites")
     const parsedArray = JSON.parse(storage)
     const favoritosRestantes = parsedArray.filter(id => id !== this.props.id)
     const stringArray = JSON.stringify(favoritosRestantes)
       
-    localStorage.setItem("Favoritos", stringArray)
+    localStorage.setItem("favorites", stringArray)
     
     this.setState(
       {
@@ -60,19 +63,19 @@ class MoviesCard extends Component {
 
   }
 
-  componentDidMount () {
-    const storage = localStorage.getItem("Favoritos")
-
+  componentDidMount() {
+    const storage = localStorage.getItem("favorites");
+  
     if (storage !== null) {
-
-      const parsedArray = JSON.parse(storage)
-      const estaEnFavoritos = parsedArray.includes (this.props.id)
-      this.setState({
-        
-      })
-    } else {
+      const parsedArray = JSON.parse(storage);
+      const estaEnFavoritos = parsedArray.includes(this.props.id);
       
-    }  
+      if (estaEnFavoritos) {
+        this.setState({
+          esFavorito: true
+        });
+      }
+    }
   }
 
   render() {
@@ -84,7 +87,7 @@ class MoviesCard extends Component {
 
       <article className='movie-card'>
         <Link to={`/Detalle/${id}`} className='titulo'>
-          <h1>{title}</h1>
+          
         </Link>
         <img src={imageUrl} alt={title} />
 

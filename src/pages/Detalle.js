@@ -36,13 +36,7 @@ class Detalle extends Component {
     } else {
       favoritos.push(id);
     }
-    if (localStorage.getItem("favorites")){
-      localStorage.removeItem('favorites');
-      localStorage.setItem('favorites', JSON.stringify(favoritos));
-    } else {
-      localStorage.setItem('favorites', JSON.stringify(favoritos));
-    }
-
+    localStorage.setItem('favorites', JSON.stringify(favoritos));
 
     this.setState((prevState) => ({
       isFavorite: !prevState.isFavorite
@@ -51,7 +45,6 @@ class Detalle extends Component {
 
   render() {
     const { details, isFavorite } = this.state;
-
 
     return (
       <div>

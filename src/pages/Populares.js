@@ -9,6 +9,9 @@ class Populares extends Component {
         super(props);
         this.state = {
             Populares: [],
+            PopularesPrimeras : [],
+            BuscadorPop : [],
+            cargarMas : false
 
         };
     }
@@ -18,10 +21,28 @@ class Populares extends Component {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data.results);
-                this.setState({ Populares: data.results });
+                this.setState({
+                    Populares: data.results,
+                    PopularesPrimeras: data.results.slice(0, 10) 
+                    
+                });
             })
             .catch((e) => console.log(e));
     }
+
+    handleFilterChange(){
+        this.setState({
+        BuscadorPop: this.state.Populares.filter(movie => movie.title.includes(this.state.filterValue) )
+        })
+        }
+
+    cargarMas () {
+        this.setState({
+            cargarMas : true
+
+        })
+    }
+
 
     render() {
 
@@ -30,13 +51,21 @@ class Populares extends Component {
 
                 <h2 className='titulo'> Peliculas Populares</h2>
 
-                <ResultadosBusqueda />
-
+            <form>
+                <input className = "input" onChange={(e) =>this.handleFilterChange(e) }
+                type= 'text' name= 'query' value = {this.state.BuscadorPop} />
+                <button className='buttonVermas' onClick={() => this.handleInputSubmit() }
+                >Search Movie </button>
+            </form>
+        
                 <section className='home-movies'>
-
-                    <PopularMovies dataPopulares={this.state.Populares} />
+                   <PopularMovies dataPopulares={this.state.cargarMas ? this.state.Populares : this.state.PopularesPrimeras} />
+                 
 
                 </section>
+
+                <button className= {this.state.cargarMas ? 'esconder' : 'buttonVermas'} onClick={() => this.cargarMas() } >  {this.state.cargarMas ? '' : 'Cargar Mas...'} </button>
+
 
             </>
         );
