@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PopularMovies from '../components/PopularMovies/PopularMovies';
-import ResultadosBusqueda from '../components/ResultadosBusqueda/ResultadosBusqueda';
 
 
 class Populares extends Component {
@@ -10,8 +9,8 @@ class Populares extends Component {
         this.state = {
             Populares: [],
             PopularesPrimeras : [],
-            BuscadorPop : [],
-            cargarMas : false
+            cargarMas : false,
+            nameValue : ""
 
         };
     }
@@ -30,12 +29,6 @@ class Populares extends Component {
             .catch((e) => console.log(e));
     }
 
-    handleFilterChange(){
-        this.setState({
-        BuscadorPop: this.state.Populares.filter(movie => movie.title.includes(this.state.filterValue) )
-        })
-        }
-
     cargarMas () {
         this.setState({
             cargarMas : true
@@ -43,6 +36,12 @@ class Populares extends Component {
         })
     }
 
+    handleChangeName(event) {
+        this.setState({
+            nameValue: event.target.value
+        }, () => console.log(this.state.nameValue));
+    }
+    
 
     render() {
 
@@ -50,18 +49,17 @@ class Populares extends Component {
             <>
 
                 <h2 className='titulo'> Peliculas Populares</h2>
+                
+                <form className='form'>
+                    <input className = "input" value = {this.state.nameValue} onChange={(event) => this.handleChangeName(event)}>
 
-            <form>
-                <input className = "input" onChange={(e) =>this.handleFilterChange(e) }
-                type= 'text' name= 'query' value = {this.state.BuscadorPop} />
-                <button className='buttonVermas' onClick={() => this.handleInputSubmit() }
-                >Search Movie </button>
-            </form>
-        
+                    </input>
+
+                    <button type='submit'> Buscar </button>
+                </form>
+
                 <section className='home-movies'>
                    <PopularMovies dataPopulares={this.state.cargarMas ? this.state.Populares : this.state.PopularesPrimeras} />
-                 
-
                 </section>
 
                 <button className= {this.state.cargarMas ? 'esconder' : 'buttonVermas'} onClick={() => this.cargarMas() } >  {this.state.cargarMas ? '' : 'Cargar Mas...'} </button>

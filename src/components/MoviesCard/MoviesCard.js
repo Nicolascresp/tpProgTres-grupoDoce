@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import "./MoviesCard.css"
-import Favoritos from '../../pages/Favoritos';
 
 class MoviesCard extends Component {
   constructor(props) {
@@ -21,9 +20,6 @@ class MoviesCard extends Component {
   agregarFavoritos() {
 
     const storage = localStorage.getItem("favorites")
-    console.log(
-      storage
-    );
 
     if (storage !== null) {
 
@@ -48,28 +44,27 @@ class MoviesCard extends Component {
   }
 
   sacarFavoritos() {
-    const storage = localStorage.getItem("favorites")
-    const parsedArray = JSON.parse(storage)
-    const favoritosRestantes = parsedArray.filter(id => id !== this.props.id)
-    const stringArray = JSON.stringify(favoritosRestantes)
-      
-    localStorage.setItem("favorites", stringArray)
+    const storage = localStorage.getItem("favorites");
     
-    this.setState(
-      {
-        esFavorito: false
-      }
-    )
-
+    if (storage !== null) {
+      const parsedArray = JSON.parse(storage);
+      const favoritosRestantes = parsedArray.filter(id => id !== this.props.id);
+      const stringArray = JSON.stringify(favoritosRestantes);
+      localStorage.setItem("favorites", stringArray); 
+    } 
+  
+    this.setState({
+      esFavorito: false
+    });
   }
-
+  
   componentDidMount() {
     const storage = localStorage.getItem("favorites");
-  
+
     if (storage !== null) {
       const parsedArray = JSON.parse(storage);
       const estaEnFavoritos = parsedArray.includes(this.props.id);
-      
+
       if (estaEnFavoritos) {
         this.setState({
           esFavorito: true
@@ -86,8 +81,8 @@ class MoviesCard extends Component {
     return (
 
       <article className='movie-card'>
-        <Link to={`/Detalle/${id}`} className='titulo'>
-          
+        <Link to={`/Detalle/${id}`}>
+          <h2 className="titulo-card">{title}</h2>
         </Link>
         <img src={imageUrl} alt={title} />
 
