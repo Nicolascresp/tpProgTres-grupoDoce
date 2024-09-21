@@ -1,6 +1,7 @@
 import "./navbar.css"
 import { Link } from "react-router-dom"
-import { Component } from 'react';
+import React,{ Component } from 'react';
+import ResultadosBusqueda from "../ResultadosBusqueda/ResultadosBusqueda";
 
 class Navbar extends Component {
     constructor(props) {
@@ -8,16 +9,6 @@ class Navbar extends Component {
         this.state = {
             query: ""
         };
-    }
-
-    handleInputChange(e) {
-        this.setState({
-            query: e.target.value
-        });
-    }
-
-    handleInputSubmit(e) {
-        this.props.history.push('/search', { query: this.state.query });
     }
 
     render(){
@@ -29,14 +20,6 @@ class Navbar extends Component {
                 <li><Link to="/Favoritos">FAVORITOS</Link></li>
                 <li><Link to="/">VER MAS</Link></li>
             </ul>
-
-            <form className="form" onSubmit={(e) => this.handleInputSubmit(e)}>
-                    <input  className="input" type="text" name="query" placeholder="Buscar Peliculas" value={this.state.query}
-                        onChange={(e) => this.handleInputChange(e)} 
-                    />
-                    <button type="submit">Buscar</button>
-                </form>
-
         </nav>
     )
 }}

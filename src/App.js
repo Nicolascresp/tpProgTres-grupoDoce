@@ -25,13 +25,11 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/Section/:id" component={Seccion} />
           <Route path="/Favoritos" component={Favoritos} />
-          <Route path="/Resultados" component={Resultados} />
           <Route path="/Detalle/:id" component={Detalle} />
           <Route path="/Populares" component={Populares} />
-
-          
-          <Route component={Error404} />
           <Route path="/search" component={Resultados} />
+          <Route component={Error404} />
+          
         </Switch>
       </main>
       <footer className="footer">

@@ -24,7 +24,7 @@ import { Component } from 'react';
             <form className="form">
                 <input className = "input" onChange={(e) =>this.handleInputChange(e) }
                 type= 'text' name= 'query' value = {this.state.query} />
-                <button className='buttonVermas' onClick={() => this.handleInputSubmit() }
+                <button className='buttonVermas' type='submit' placeholder="Buscar Peliculas" onClick={() => this.handleInputSubmit() }
                 >Search Movie </button>
             </form>
         )
