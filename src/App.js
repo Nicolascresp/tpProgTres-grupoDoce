@@ -9,6 +9,7 @@ import Resultados from './pages/Resultados';
 import Error404 from './components/Error404/Error404';
 import ResultadosBusqueda from './components/ResultadosBusqueda/ResultadosBusqueda';
 import Populares from './pages/Populares';
+import Cartelera from './pages/Cartelera';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path="/Favoritos" component={Favoritos} />
           <Route path="/Detalle/:id" component={Detalle} />
           <Route path="/Populares" component={Populares} />
+          <Route path="/Cartelera" component={Cartelera} />
           <Route path="/search" component={Resultados} />
           <Route component={Error404} />
           

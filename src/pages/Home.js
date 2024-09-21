@@ -47,7 +47,7 @@ class Home extends Component {
         <section className='home-movies'>
           <HomeMovies url="https://api.themoviedb.org/3/movie/now_playing?api_key=8ba8bbe7dfab5ab5da50fbbbaf3e12a2" titulo="Peliculas en Cartelera" />
 
-          <Link to={`/Populares`} className='buttonVermasHome'>
+          <Link to={`/Cartelera`} className='buttonVermasHome'>
             Ver Mas
           </Link>
 
