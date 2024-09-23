@@ -10,11 +10,15 @@ class Populares extends Component {
       PopularesPrimeras: [],
       moviesFiltrado: [], 
       cargarMas: false,
-      nameValue: ""
+      nameValue: "",
+      isLoading: true
     };
   }
 
   componentDidMount() {
+    this.setState({
+      isLoading: true
+    })
     fetch("https://api.themoviedb.org/3/movie/popular?api_key=8ba8bbe7dfab5ab5da50fbbbaf3e12a2")
       .then((response) => response.json())
       .then((data) => {
@@ -37,7 +41,7 @@ class Populares extends Component {
     const filterValue = event.target.value; 
     this.setState({
       nameValue: filterValue,
-      moviesFiltrado: filterValue === "" ? this.state.Populares : this.state.Populares.filter(movie => movie.title.toLowerCase().includes(filterValue))
+      moviesFiltrado: filterValue === "" ? this.state.  Populares : this.state.Populares.filter(movie => movie.title.toLowerCase().includes(filterValue))
     });
   }
 
@@ -45,7 +49,7 @@ class Populares extends Component {
     return (
       <>
 
-        <ResultadosBusqueda history ={this.props.history}/>
+        
         <h2 className='titulo'> Peliculas Populares</h2>
 
         <form className='form'>

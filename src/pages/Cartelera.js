@@ -10,11 +10,15 @@ class Cartelera extends Component {
       CarteleraInicio: [],
       moviesFiltrado: [], 
       cargarMas: false,
-      nameValue: ""
+      nameValue: "",
+      isLoading: true
     };
   }
 
   componentDidMount() {
+    this.setState({
+        isLoading: true
+      })
     fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=8ba8bbe7dfab5ab5da50fbbbaf3e12a2")
       .then((response) => response.json())
       .then((data) => {
@@ -25,6 +29,10 @@ class Cartelera extends Component {
         });
       })
       .catch((e) => console.log(e));
+
+      this.setState({
+        isLoading: false
+      })
   }
 
   cargarMas() {
@@ -44,8 +52,7 @@ class Cartelera extends Component {
   render() {
     return (
       <>
-
-        <ResultadosBusqueda history ={this.props.history}/>
+        
         <h2 className='titulo'> Peliculas en Cartelera</h2>
 
         <form className='form'>

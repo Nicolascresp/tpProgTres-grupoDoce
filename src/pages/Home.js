@@ -9,11 +9,14 @@ class Home extends Component {
     super(props)
 
     this.state = {
-      
+      isLoading: true
     }
 
   }
   componentDidMount(){
+    this.setState({
+      isLoading: true
+    })
 
   }
 
@@ -39,8 +42,6 @@ class Home extends Component {
           </Link>
 
         </section>
-
-        
 
         <h2 className='titulo'> Peliculas en Cartelera</h2>
 

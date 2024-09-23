@@ -8,10 +8,14 @@ class Detalle extends Component {
     this.state = {
       details: null,
       isFavorite: false,
+      isLoading: true
     };
   }
 
   componentDidMount() {
+    this.setState({
+      isLoading: true
+    })
     const { id } = this.props.match.params;
     const apiKey = '8ba8bbe7dfab5ab5da50fbbbaf3e12a2'; 
     const endpoint = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`;

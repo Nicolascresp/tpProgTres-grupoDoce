@@ -1,6 +1,7 @@
 import { Component } from "react";
 import MoviesCard from "../components/MoviesCard/MoviesCard";
 import ResultadosBusqueda from "../components/ResultadosBusqueda/ResultadosBusqueda";
+import Loader from "../components/Loader/Loader";
 
 
  class Resultados extends Component {
@@ -23,23 +24,34 @@ import ResultadosBusqueda from "../components/ResultadosBusqueda/ResultadosBusqu
         ({movies: data.results,
             isLoading: false,
         }))
-        .catch((error) => console.log(error))
+        .catch((error) => console.log(error),
+        this.setState({ isLoading: false }))
     }
     render() {
+
+
+        if(this.state.movies.length === 0) {
+            return <p>No se encontraron resultados</p>
+        }
+        else{
+
+        
         return (
             <>
-                <ResultadosBusqueda history ={this.props.history}/>
+                
                 <div className="titulo">Resultados de tu busqueda: {this.props.location.state.query}</div>
                 <section className ='home-movies'>
-               { this.state.movies.map((pelicula) => <MoviesCard key={pelicula.name}
-            id={pelicula.id}
-            description={pelicula.overview}
-            title={pelicula.title}
-            img={pelicula.poster_path}/>)}
-            </section>
+
+                {this.state.movies.map((pelicula) => <MoviesCard key={pelicula.name}
+                id={pelicula.id}
+                description={pelicula.overview}
+                title={pelicula.title}
+                img={pelicula.poster_path}/>
+                )}
+                </section>
 
             </>
-        )
+        )}
     }
 }
 export default Resultados

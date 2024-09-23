@@ -7,11 +7,15 @@ class Favoritos extends Component {
     super(props);
     this.state = {
       favoriteIds: [],
-      error: null
+      error: null,
+      isLoading: true
     };
   }
 
   componentDidMount() {
+    this.setState({
+      isLoading: true
+    })
     this.FavoritesFromLocalStorage();
   }
   
@@ -41,7 +45,7 @@ class Favoritos extends Component {
 
     return (
       <div>
-        <ResultadosBusqueda history ={this.props.history}/>
+        
         {error && <p>{error}</p>}
         <FavoritosList
           favorites={favoriteIds}
