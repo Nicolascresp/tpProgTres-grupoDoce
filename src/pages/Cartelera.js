@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PeliculasCartelera from '../components/PeliculasCartelera/PeliculasCartelera';
+import ResultadosBusqueda from '../components/ResultadosBusqueda/ResultadosBusqueda';
 
 class Cartelera extends Component {
   constructor(props) {
@@ -43,6 +44,8 @@ class Cartelera extends Component {
   render() {
     return (
       <>
+
+        <ResultadosBusqueda history ={this.props.history}/>
         <h2 className='titulo'> Peliculas en Cartelera</h2>
 
         <form className='form'>

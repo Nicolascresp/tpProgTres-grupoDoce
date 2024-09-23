@@ -1,5 +1,6 @@
 import { Component } from "react";
 import MoviesCard from "../components/MoviesCard/MoviesCard";
+import ResultadosBusqueda from "../components/ResultadosBusqueda/ResultadosBusqueda";
 
 
  class Resultados extends Component {
@@ -27,6 +28,7 @@ import MoviesCard from "../components/MoviesCard/MoviesCard";
     render() {
         return (
             <>
+                <ResultadosBusqueda history ={this.props.history}/>
                 <div className="titulo">Resultados de tu busqueda: {this.props.location.state.query}</div>
                 <section className ='home-movies'>
                { this.state.movies.map((pelicula) => <MoviesCard key={pelicula.name}

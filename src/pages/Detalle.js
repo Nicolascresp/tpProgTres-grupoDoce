@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DetallePelicula from '../components/Detalles/DetallePelicula';
+import ResultadosBusqueda from '../components/ResultadosBusqueda/ResultadosBusqueda';
 
 class Detalle extends Component {
   constructor(props) {
@@ -48,6 +49,7 @@ class Detalle extends Component {
 
     return (
       <div>
+        <ResultadosBusqueda history ={this.props.history}/>
         <DetallePelicula
           details={details}
           handleAddToFavorites={this.handleAddToFavorites}

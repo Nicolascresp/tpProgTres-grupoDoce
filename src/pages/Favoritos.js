@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import FavoritosList from "../components/FavoritosList/FavoritosList";
+import ResultadosBusqueda from "../components/ResultadosBusqueda/ResultadosBusqueda";
 
 class Favoritos extends Component {
   constructor(props) {
@@ -40,6 +41,7 @@ class Favoritos extends Component {
 
     return (
       <div>
+        <ResultadosBusqueda history ={this.props.history}/>
         {error && <p>{error}</p>}
         <FavoritosList
           favorites={favoriteIds}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PopularMovies from '../components/PopularMovies/PopularMovies';
+import ResultadosBusqueda from '../components/ResultadosBusqueda/ResultadosBusqueda';
 
 class Populares extends Component {
   constructor(props) {
@@ -43,6 +44,8 @@ class Populares extends Component {
   render() {
     return (
       <>
+
+        <ResultadosBusqueda history ={this.props.history}/>
         <h2 className='titulo'> Peliculas Populares</h2>
 
         <form className='form'>
