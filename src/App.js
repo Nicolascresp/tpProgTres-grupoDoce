@@ -7,7 +7,6 @@ import Favoritos from './pages/Favoritos';
 import Detalle from './pages/Detalle';
 import Resultados from './pages/Resultados';
 import Error404 from './components/Error404/Error404';
-import ResultadosBusqueda from './components/ResultadosBusqueda/ResultadosBusqueda';
 import Populares from './pages/Populares';
 import Cartelera from './pages/Cartelera';
 

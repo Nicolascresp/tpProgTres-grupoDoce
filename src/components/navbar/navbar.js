@@ -1,7 +1,7 @@
 import "./navbar.css"
 import { Link } from "react-router-dom"
 import React,{ Component } from 'react';
-import ResultadosBusqueda from "../ResultadosBusqueda/ResultadosBusqueda";
+
 
 class Navbar extends Component {
     constructor(props) {
@@ -18,7 +18,9 @@ class Navbar extends Component {
             <ul className="nav">
                 <li><Link to="/">HOME</Link></li>
                 <li><Link to="/Favoritos">FAVORITOS</Link></li>
-                <li><Link to="/">VER MAS</Link></li>
+                <li><Link to="/Populares">POPULARES</Link></li>
+                <li><Link to="/Cartelera">CARTELERA</Link></li>
+                
             </ul>
         </nav>
     )

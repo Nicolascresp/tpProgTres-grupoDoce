@@ -59,6 +59,9 @@ class MoviesCard extends Component {
   }
   
   componentDidMount() {
+
+console.log(this.props)
+
     const storage = localStorage.getItem("favorites");
 
     if (storage !== null) {
