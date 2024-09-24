@@ -9,7 +9,7 @@ class PeliculasCartelera extends Component {
      return (
     <>
     
-     {this.props.dataCartelera.map((pelicula) => (
+     {this.props.Cartelera.map((pelicula) => (
           <MoviesCard
             key={pelicula.id}
             id={pelicula.id}

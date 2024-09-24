@@ -69,7 +69,7 @@ class Populares extends Component {
           <PopularMovies Populares={this.state.filterMovies} />
         </section>
 
-        <button className = "buttonverMas" onClick={() => this.handleLoadMore()}>
+        <button className = "buttonVermas" onClick={() => this.handleLoadMore()}>
           CARGAR MAS
         </button>
       </>

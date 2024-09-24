@@ -1,53 +1,53 @@
 import React, { Component } from 'react';
 import PeliculasCartelera from '../components/PeliculasCartelera/PeliculasCartelera';
-import ResultadosBusqueda from '../components/ResultadosBusqueda/ResultadosBusqueda';
 
 class Cartelera extends Component {
   constructor(props) {
     super(props);
     this.state = {
       Cartelera: [],
-      CarteleraInicio: [],
-      moviesFiltrado: [], 
-      cargarMas: false,
-      nameValue: "",
-      isLoading: true
+      filterMovies: [],
+      filterValue: '',
+      isLoading: true,
+      actualPage : 1
     };
   }
 
   componentDidMount() {
-    this.setState({
-        isLoading: true
-      })
-    fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=8ba8bbe7dfab5ab5da50fbbbaf3e12a2")
+
+    fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=56c25df0bc04ec0dd18325a8ea74e10c&language=en-US&page=${this.state.actualPage}`)
       .then((response) => response.json())
       .then((data) => {
         this.setState({
           Cartelera: data.results,
-          CarteleraInicio: data.results.slice(0, 10),
-          moviesFiltrado: data.results 
+          filterMovies: data.results,
+          actualPage : this.state.actualPage +1 
         });
       })
       .catch((e) => console.log(e));
 
+  }
+
+  handleFilterChange = (event) => {
+    const userValue = event.target.value;
+    this.setState({
+      filterValue: userValue,
+      filterMovies: this.state.Cartelera.filter(movie =>
+        movie.title.toLowerCase().includes(userValue.toLowerCase())
+    )});
+  }
+
+  handleLoadMore () {
+    fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=56c25df0bc04ec0dd18325a8ea74e10c&language=en-US&page=${this.state.actualPage}`)
+    .then((response) => response.json())
+    .then((data) => {
       this.setState({
-        isLoading: false
-      })
-  }
-
-  cargarMas() {
-    this.setState({
-      cargarMas: true
-    });
-  }
-
-  handleFilterChange(event) {
-    const filterValue = event.target.value; 
-    this.setState({
-      nameValue: filterValue,
-      moviesFiltrado: filterValue === "" ? this.state.Cartelera : this.state.Cartelera.filter(movie => movie.title.toLowerCase().includes(filterValue))
-    });
-  }
+        Cartelera: this.state.Cartelera.concat(data.results),
+        filterMovies: data.results,
+        actualPage : this.state.actualPage +1
+      });
+    })
+    .catch((e) => console.log(e));}
 
   render() {
     return (
@@ -59,17 +59,17 @@ class Cartelera extends Component {
           <input
             placeholder='Buscar Pelicula...'
             className="input"
-            value={this.state.nameValue}
-            onChange={(event) => this.handleFilterChange(event)}
+            value={this.state.filterValue} 
+            onChange={this.handleFilterChange}
           />
         </form>
 
         <section className='home-movies'>
-          <PeliculasCartelera dataCartelera={this.state.cargarMas ? this.state.moviesFiltrado : this.state.moviesFiltrado.slice(0, 10)} />
+          <PeliculasCartelera Cartelera={this.state.filterMovies} /> 
         </section>
 
-        <button className={this.state.cargarMas ? 'esconder' : 'buttonVermas'} onClick={() => this.cargarMas()}>
-          {this.state.cargarMas ? '' : 'Cargar Mas...'}
+        <button className= 'buttonVermas' onClick={() => this.handleLoadMore()}>
+          Cargar Mas
         </button>
       </>
     );
