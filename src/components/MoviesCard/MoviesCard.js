@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import "./MoviesCard.css"
-import Favoritos from '../../pages/Favoritos';
 
 class MoviesCard extends Component {
   constructor(props) {
@@ -19,57 +18,56 @@ class MoviesCard extends Component {
   }
 
   agregarFavoritos() {
-
-    const storage = localStorage.getItem("favorites")
-    console.log(
-      storage
-    );
-
-    if (storage !== null) {
-
-      const parsedArray = JSON.parse(storage)
-      parsedArray.push(this.props.id)
-      const stringArray = JSON.stringify(parsedArray)
-      localStorage.setItem("favorites", stringArray)
-
-
-    } else {
-      const primerMovie = [this.props.id]
-      const stringArray = JSON.stringify(primerMovie)
-      localStorage.setItem("favorites", stringArray)
-    }
-
-    this.setState(
-      {
-        esFavorito: true
-      }
-    )
-
-  }
-
-  sacarFavoritos() {
-    const storage = localStorage.getItem("favorites")
-    const parsedArray = JSON.parse(storage)
-    const favoritosRestantes = parsedArray.filter(id => id !== this.props.id)
-    const stringArray = JSON.stringify(favoritosRestantes)
-      
-    localStorage.setItem("favorites", stringArray)
-    
-    this.setState(
-      {
-        esFavorito: false
-      }
-    )
-
-  }
-
-  componentDidMount() {
     const storage = localStorage.getItem("favorites");
+  
+    const movieIdAsString = this.props.id.toString();
   
     if (storage !== null) {
       const parsedArray = JSON.parse(storage);
+  
+      if (!parsedArray.includes(movieIdAsString)) {
+        parsedArray.push(movieIdAsString);
+        const stringArray = JSON.stringify(parsedArray);
+        localStorage.setItem("favorites", stringArray);
+      }
+    } else {
+  
+      const primerMovie = [movieIdAsString];
+      const stringArray = JSON.stringify(primerMovie);
+      localStorage.setItem("favorites", stringArray);
+    }
+  
+    this.setState({
+      esFavorito: true
+    });
+  }
+  
+
+  sacarFavoritos() {
+    const storage = localStorage.getItem("favorites");
+    
+    if (storage !== null) {
+      const parsedArray = JSON.parse(storage);
+      const favoritosRestantes = parsedArray.filter(id => id !== this.props.id);
+      const stringArray = JSON.stringify(favoritosRestantes);
+      localStorage.setItem("favorites", stringArray); 
+    } 
+  
+    this.setState({
+      esFavorito: false
+    });
+  }
+  
+  componentDidMount() {
+
+console.log(this.props)
+
+    const storage = localStorage.getItem("favorites");
+
+    if (storage !== null) {
+      const parsedArray = JSON.parse(storage);
       const estaEnFavoritos = parsedArray.includes(this.props.id);
-      
+
       if (estaEnFavoritos) {
         this.setState({
           esFavorito: true
@@ -86,8 +84,8 @@ class MoviesCard extends Component {
     return (
 
       <article className='movie-card'>
-        <Link to={`/Detalle/${id}`} className='titulo'>
-          
+        <Link to={`/Detalle/${id}`}>
+          <h2 className="titulo-card">{title}</h2>
         </Link>
         <img src={imageUrl} alt={title} />
 
