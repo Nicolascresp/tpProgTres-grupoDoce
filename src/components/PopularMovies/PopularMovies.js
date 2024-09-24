@@ -12,7 +12,7 @@ class PopularMovies extends Component {
     return (
     <>
     
-     {this.props.dataPopulares.map((pelicula) => (
+     {this.props.Populares.map((pelicula) => (
           <MoviesCard
             key={pelicula.id}
             id={pelicula.id}
