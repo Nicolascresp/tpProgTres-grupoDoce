@@ -3,8 +3,9 @@ import "./Loader.css"
 
 const Loader = () => {
   return (
-    <div>Loader</div>
+    <div className="">
+    <img src="" alt="Cargando.." />
+    <p>Cargando...</p></div>
   )
 }
-
 export default Loader

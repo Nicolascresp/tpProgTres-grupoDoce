@@ -7,8 +7,8 @@ import Favoritos from './pages/Favoritos';
 import Detalle from './pages/Detalle';
 import Resultados from './pages/Resultados';
 import Error404 from './components/Error404/Error404';
-import ResultadosBusqueda from './components/ResultadosBusqueda/ResultadosBusqueda';
 import Populares from './pages/Populares';
+import Cartelera from './pages/Cartelera';
 
 
 function App() {
@@ -25,13 +25,12 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/Section/:id" component={Seccion} />
           <Route path="/Favoritos" component={Favoritos} />
-          <Route path="/Resultados" component={Resultados} />
           <Route path="/Detalle/:id" component={Detalle} />
           <Route path="/Populares" component={Populares} />
-
-          
-          <Route component={Error404} />
+          <Route path="/Cartelera" component={Cartelera} />
           <Route path="/search" component={Resultados} />
+          <Route component={Error404} />
+          
         </Switch>
       </main>
       <footer className="footer">

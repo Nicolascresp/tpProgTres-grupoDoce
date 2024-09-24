@@ -3,23 +3,36 @@
     flex-direction: row;
     align-items: center;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-
 .nav li {
-    padding: 10px;
-    margin-right: 20px; 
+    padding: 10px 15px;
+    margin-right: 20px;
+    position: relative;
+}
 
+.nav li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav li a:hover {
+    color: #aab;
 }
 
 .mainnav {
     display: flex;
     flex-direction: row;
-    justify-content: center; 
-    margin-right: 200px;
+    justify-content: center;
+    flex-grow: 1;
 }
 
 .form {
     display: flex;
     align-items: center;
+    margin-left: auto;
 }

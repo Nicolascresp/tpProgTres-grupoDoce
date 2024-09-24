@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DetallePelicula from '../components/Detalles/DetallePelicula';
+import ResultadosBusqueda from '../components/ResultadosBusqueda/ResultadosBusqueda';
 
 class Detalle extends Component {
   constructor(props) {
@@ -7,10 +8,14 @@ class Detalle extends Component {
     this.state = {
       details: null,
       isFavorite: false,
+      isLoading: true
     };
   }
 
   componentDidMount() {
+    this.setState({
+      isLoading: true
+    })
     const { id } = this.props.match.params;
     const apiKey = '8ba8bbe7dfab5ab5da50fbbbaf3e12a2'; 
     const endpoint = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`;
@@ -48,6 +53,7 @@ class Detalle extends Component {
 
     return (
       <div>
+        <ResultadosBusqueda history ={this.props.history}/>
         <DetallePelicula
           details={details}
           handleAddToFavorites={this.handleAddToFavorites}

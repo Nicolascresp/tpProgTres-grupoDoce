@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import PopularMovies from '../components/PopularMovies/PopularMovies';
+import PeliculasCartelera from '../components/PeliculasCartelera/PeliculasCartelera';
 import ResultadosBusqueda from '../components/ResultadosBusqueda/ResultadosBusqueda';
 
-class Populares extends Component {
+class Cartelera extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      Populares: [],
-      PopularesPrimeras: [],
+      Cartelera: [],
+      CarteleraInicio: [],
       moviesFiltrado: [], 
       cargarMas: false,
       nameValue: "",
@@ -17,18 +17,22 @@ class Populares extends Component {
 
   componentDidMount() {
     this.setState({
-      isLoading: true
-    })
-    fetch("https://api.themoviedb.org/3/movie/popular?api_key=8ba8bbe7dfab5ab5da50fbbbaf3e12a2")
+        isLoading: true
+      })
+    fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=8ba8bbe7dfab5ab5da50fbbbaf3e12a2")
       .then((response) => response.json())
       .then((data) => {
         this.setState({
-          Populares: data.results,
-          PopularesPrimeras: data.results.slice(0, 10),
+          Cartelera: data.results,
+          CarteleraInicio: data.results.slice(0, 10),
           moviesFiltrado: data.results 
         });
       })
       .catch((e) => console.log(e));
+
+      this.setState({
+        isLoading: false
+      })
   }
 
   cargarMas() {
@@ -41,16 +45,15 @@ class Populares extends Component {
     const filterValue = event.target.value; 
     this.setState({
       nameValue: filterValue,
-      moviesFiltrado: filterValue === "" ? this.state.  Populares : this.state.Populares.filter(movie => movie.title.toLowerCase().includes(filterValue))
+      moviesFiltrado: filterValue === "" ? this.state.Cartelera : this.state.Cartelera.filter(movie => movie.title.toLowerCase().includes(filterValue))
     });
   }
 
   render() {
     return (
       <>
-
         
-        <h2 className='titulo'> Peliculas Populares</h2>
+        <h2 className='titulo'> Peliculas en Cartelera</h2>
 
         <form className='form'>
           <input
@@ -62,7 +65,7 @@ class Populares extends Component {
         </form>
 
         <section className='home-movies'>
-          <PopularMovies dataPopulares={this.state.cargarMas ? this.state.moviesFiltrado : this.state.moviesFiltrado.slice(0, 10)} />
+          <PeliculasCartelera dataCartelera={this.state.cargarMas ? this.state.moviesFiltrado : this.state.moviesFiltrado.slice(0, 10)} />
         </section>
 
         <button className={this.state.cargarMas ? 'esconder' : 'buttonVermas'} onClick={() => this.cargarMas()}>
@@ -73,4 +76,4 @@ class Populares extends Component {
   }
 }
 
-export default Populares;
+export default Cartelera;
