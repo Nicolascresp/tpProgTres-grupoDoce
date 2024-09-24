@@ -18,45 +18,8 @@ class MoviesCard extends Component {
   }
 
   agregarFavoritos() {
-<<<<<<< HEAD
-=======
-
-    const storage = localStorage.getItem("favorites")
-
-    if (storage !== null) {
-
-      const parsedArray = JSON.parse(storage)
-      parsedArray.push(this.props.id)
-      const stringArray = JSON.stringify(parsedArray)
-      localStorage.setItem("favorites", stringArray)
-
-
-    } else {
-      const primerMovie = [this.props.id]
-      const stringArray = JSON.stringify(primerMovie)
-      localStorage.setItem("favorites", stringArray)
-    }
-
-    this.setState(
-      {
-        esFavorito: true
-      }
-    )
-
-  }
-
-  sacarFavoritos() {
->>>>>>> b7418140513451ad03920fe7da2d533c7299cdf4
     const storage = localStorage.getItem("favorites");
-    
-    if (storage !== null) {
-      const parsedArray = JSON.parse(storage);
-      const favoritosRestantes = parsedArray.filter(id => id !== this.props.id);
-      const stringArray = JSON.stringify(favoritosRestantes);
-      localStorage.setItem("favorites", stringArray); 
-    } 
   
-<<<<<<< HEAD
     const movieIdAsString = this.props.id.toString();
   
     if (storage !== null) {
@@ -78,6 +41,7 @@ class MoviesCard extends Component {
       esFavorito: true
     });
   }
+
   
 
   sacarFavoritos() {
@@ -90,8 +54,6 @@ class MoviesCard extends Component {
       localStorage.setItem("favorites", stringArray); 
     } 
   
-=======
->>>>>>> b7418140513451ad03920fe7da2d533c7299cdf4
     this.setState({
       esFavorito: false
     });
