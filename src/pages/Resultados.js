@@ -1,6 +1,5 @@
 import { Component } from "react";
 import MoviesCard from "../components/MoviesCard/MoviesCard";
-import ResultadosBusqueda from "../components/ResultadosBusqueda/ResultadosBusqueda";
 import Loader from "../components/Loader/Loader";
 
 
@@ -31,8 +30,14 @@ import Loader from "../components/Loader/Loader";
 
 
         if(this.state.movies.length === 0) {
-            return <p>No se encontraron resultados</p>
-        }
+            
+                return( 
+            <>
+                <p className="textoError">No se encontraron resultados para tu busqueda: {this.props.location.state.query}. </p>
+                <img className="imagenError" src="/img/confundido.gif" alt="confundido" />
+                <p className="textoError">Haga click <a href='/' className="linkError">aqui</a> para volver a la página de inicio</p> 
+            </>
+        )}
         else{
 
         
