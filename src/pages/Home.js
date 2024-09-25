@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import HomeMovies from '../components/HomeMovies/HomeMovies';
 import  ResultadosBusqueda from '../components/ResultadosBusqueda/ResultadosBusqueda';
+import Loader from '../components/Loader/Loader';
 
 class Home extends Component {
 
@@ -15,7 +16,7 @@ class Home extends Component {
   }
   componentDidMount(){
     this.setState({
-      isLoading: true
+      isLoading: false
     })
 
   }
@@ -26,6 +27,11 @@ class Home extends Component {
   
   render() {
 
+    const { isLoading } = this.state;
+    
+    if (isLoading) {
+      return <Loader />;
+    }
     return (
       <>
         

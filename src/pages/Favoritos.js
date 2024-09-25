@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import FavoritosList from "../components/FavoritosList/FavoritosList";
-import ResultadosBusqueda from "../components/ResultadosBusqueda/ResultadosBusqueda";
+import Loader from "../components/Loader/Loader";
+
 
 class Favoritos extends Component {
   constructor(props) {
@@ -26,9 +27,9 @@ class Favoritos extends Component {
   
       const uniqueFavorites = [...new Set(storedFavorites.map(favId => favId.toString()))];
   
-      this.setState({ favoriteIds: uniqueFavorites });
+      this.setState({ favoriteIds: uniqueFavorites, isLoading: false });
     } catch (error) {
-      this.setState({ error: "Error loading favorites from localStorage" });
+      this.setState({ error: "Error loading favorites from localStorage" ,  isLoading: false});
     }
   };
   
@@ -43,7 +44,7 @@ class Favoritos extends Component {
   };
 
   render() {
-    const { favoriteIds, error } = this.state;
+    const { favoriteIds, error, isLoading } = this.state;
     console.log("Stored favorites:", JSON.parse(localStorage.getItem("favorites")));
 
     return (

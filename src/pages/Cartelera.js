@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PeliculasCartelera from '../components/PeliculasCartelera/PeliculasCartelera';
+import Loader from '../components/Loader/Loader';
 
 class Cartelera extends Component {
   constructor(props) {
@@ -15,16 +16,20 @@ class Cartelera extends Component {
 
   componentDidMount() {
 
+    this.setState({ isLoading: true });
+    
     fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=56c25df0bc04ec0dd18325a8ea74e10c&language=en-US&page=${this.state.actualPage}`)
       .then((response) => response.json())
       .then((data) => {
         this.setState({
           Cartelera: data.results,
           filterMovies: data.results,
-          actualPage : this.state.actualPage +1 
+          actualPage : this.state.actualPage +1 ,
+          isLoading: false
         });
       })
       .catch((e) => console.log(e));
+      this.setState({ isLoading: false });
 
   }
 
@@ -38,18 +43,29 @@ class Cartelera extends Component {
   }
 
   handleLoadMore () {
+    this.setState({ isLoading: true })
     fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=56c25df0bc04ec0dd18325a8ea74e10c&language=en-US&page=${this.state.actualPage}`)
     .then((response) => response.json())
     .then((data) => {
       this.setState({
         Cartelera: this.state.Cartelera.concat(data.results),
         filterMovies: data.results,
-        actualPage : this.state.actualPage +1
+        actualPage : this.state.actualPage +1,
+        isLoading: false
       });
     })
-    .catch((e) => console.log(e));}
+  
+    .catch((e) => this.setState({ isLoading: false }) )}
+    
 
   render() {
+
+    const { isLoading } = this.state;
+
+    if (isLoading) {
+      return <Loader />;
+    }
+
     return (
       <>
         

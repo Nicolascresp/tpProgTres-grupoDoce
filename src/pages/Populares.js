@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PopularMovies from "../components/PopularMovies/PopularMovies"
+import Loader from '../components/Loader/Loader';
 
 class Populares extends Component {
   constructor(props) {
@@ -14,17 +15,20 @@ class Populares extends Component {
   }
 
   componentDidMount() {
+
+    this.setState({ isLoading: true });
+
     fetch(`https://api.themoviedb.org/3/movie/popular?api_key=56c25df0bc04ec0dd18325a8ea74e10c&language=en-US&page=${this.state.actualPage}`)
       .then((response) => response.json())
       .then((data) => {
         this.setState({
           Populares: data.results,
           filterMovies: data.results,
-          actualPage : this.state.actualPage +1
-
+          actualPage : this.state.actualPage +1,
+          isLoading: false
         });
       })
-      .catch((e) => console.log(e));
+      .catch((e) => this.setState({ isLoading: false }));
   }
 
   handleFilterChange = (event) => {
@@ -39,20 +43,31 @@ class Populares extends Component {
   }
 
   handleLoadMore () {
+
+    this.setState({ isLoading: true })
+
     fetch(`https://api.themoviedb.org/3/movie/popular?api_key=56c25df0bc04ec0dd18325a8ea74e10c&language=en-US&page=${this.state.actualPage}`)
     .then((response) => response.json())
     .then((data) => {
       this.setState({
         Populares: this.state.Populares.concat(data.results),
         filterMovies: data.results,
-        actualPage : this.state.actualPage +1
+        actualPage : this.state.actualPage +1,
+        isLoading: false
       });
     })
-    .catch((e) => console.log(e));
+    .catch((e) => this.setState({ isLoading: false }));
   }
 
   
   render() {
+
+    const { isLoading } = this.state;
+
+    if (isLoading) {
+      return <Loader />;
+    }
+
     return (
       <>
         <h2 className='titulo'> Películas Populares</h2>
