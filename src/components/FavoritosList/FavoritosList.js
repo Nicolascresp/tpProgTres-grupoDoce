@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
 import FavoritosCard from "../FavoritosCard/FavoritosCard";
 import "./FavoritosList.css";
+import Loader from '../Loader/Loader';
 
 class FavoritosList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       movieDetails: [],
-      error: null
+      error: null,
+      isLoading: true
     };
   }
 
   componentDidUpdate(prevProps) {
+
     if (prevProps.favorites !== this.props.favorites) {
-      this.fetchMovieDetails();
+      this.setState({
+        isLoading: true
+      })
+      this.fetchMovieDetails(); 
+    
     }
   }
 
@@ -21,7 +28,7 @@ class FavoritosList extends Component {
     const favoriteIds = this.props.favorites;
 
     if (!favoriteIds.length) {
-      this.setState({ movieDetails: [], error: null });
+      this.setState({ movieDetails: [], error: null, isLoading: false  });
       return;
     }
 
@@ -31,17 +38,22 @@ class FavoritosList extends Component {
           .then(response => response.ok ? response.json() : Promise.reject('Error fetching data'))
           .catch(error => this.setState(prevState => ({
             error: error.message || 'Error fetching data',
-            movieDetails: prevState.movieDetails 
+            movieDetails: prevState.movieDetails,
+            isLoading: false
           })))
       )
     )
-    .then(movies => this.setState({ movieDetails: movies, error: null }))
-    .catch(error => this.setState({ error: error.message }));
+    .then(movies => this.setState({ movieDetails: movies, error: null, isLoading: false }))
+    .catch(error => this.setState({ error: error.message, isLoading: false }));
   };
 
   render() {
-    const { movieDetails, error } = this.state;
+    const { movieDetails, error, isLoading  } = this.state;
     const { onRemoveFavorite } = this.props;
+
+    if (isLoading) {
+      return <Loader />;
+    }
 
     return (
       <div>

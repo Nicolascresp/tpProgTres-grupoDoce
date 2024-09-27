@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import "../../components/Detalles/DetallePelicula.css"
+import Loader from '../Loader/Loader';
 
 class DetallePelicula extends Component {
     render() {
         const { details, handleAddToFavorites, isFavorite } = this.props;
 
         if (!details) {
-            return <p>Cargando...</p>;
+            return < Loader/>;
         }
 
         const imageUrl = `https://image.tmdb.org/t/p/w500${details.poster_path}`;

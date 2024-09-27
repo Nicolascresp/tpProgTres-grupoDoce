@@ -28,8 +28,8 @@ class Cartelera extends Component {
           isLoading: false
         });
       })
-      .catch((e) => console.log(e));
-      this.setState({ isLoading: false });
+      .catch((e) => 
+      this.setState({ isLoading: false }));
 
   }
 
