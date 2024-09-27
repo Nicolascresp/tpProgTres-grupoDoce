@@ -23,18 +23,23 @@ import Loader from "../components/Loader/Loader";
         ({movies: data.results,
             isLoading: false,
         }))
-        .catch((error) => console.log(error),
+        .catch((error) =>
         this.setState({ isLoading: false }))
     }
     render() {
 
+        const { isLoading, movies } = this.state;
 
-        if(this.state.movies.length === 0) {
+        if (isLoading) {
+            return <Loader />;
+    } 
+
+        if(movies.length === 0) {
             
                 return( 
             <>
                 <p className="textoError">No se encontraron resultados para tu busqueda: {this.props.location.state.query}. </p>
-                <img className="imagenError" src="/img/confundido.gif" alt="confundido" />
+                <img className="imagenError" src="/img/thinking-smiley-emoji-thinking.gif" alt="confundido" />
                 <p className="textoError">Haga click <a href='/' className="linkError">aqui</a> para volver a la página de inicio</p> 
             </>
         )}
