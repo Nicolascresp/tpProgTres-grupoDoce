@@ -20,7 +20,7 @@ class Favoritos extends Component {
   FavoritesFromLocalStorage = () => {
     try {
       const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
-      console.log("Initial favorites:", storedFavorites);
+      
   
       const uniqueFavorites = [...new Set(storedFavorites.map(favId => favId.toString()))];
   
@@ -36,13 +36,13 @@ class Favoritos extends Component {
     localStorage.removeItem("favorites")
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
     this.setState({ favoriteIds: updatedFavorites }, () => {
-      console.log("Updated favorite IDs:", this.state.favoriteIds);
+      
     });
   };
 
   render() {
     const { favoriteIds, error } = this.state;
-    console.log("Stored favorites:", JSON.parse(localStorage.getItem("favorites")));
+   
 
     return (
       <div>

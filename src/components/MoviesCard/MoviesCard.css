@@ -19,7 +19,7 @@
 }
 
 .movie-card:hover {
-    transform: scale(1.05); 
+    transform: scale(1.03); 
     background-color: #042a56; 
 }
 

@@ -29,7 +29,7 @@ class Detalle extends Component {
         const isFavorite = favoritos.includes(id);
         this.setState({ isFavorite });
       })
-      .catch((e) => console.log(e));
+      .catch((e) => {});
   }
 
   handleAddToFavorites = () => {

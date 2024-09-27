@@ -14,10 +14,9 @@ class HomeMovies extends Component {
     fetch(this.props.url)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.results);
         this.setState({ Movies: data.results });
       })
-      .catch((e) => console.log(e));
+      .catch((e) => {});
   }
 
   render() { 
