@@ -37,12 +37,12 @@
 
 .detalle-container .genres {
   color: #777;
-  font-style: italic; /* Géneros en cursiva */
+  font-style: italic; 
   font-family: 'Arial', sans-serif;
 }
 
 .detalle-container button {
-  background-color: #007bff; /* Botón azul */
+  background-color: #007bff; 
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -53,5 +53,31 @@
 }
 
 .detalle-container button:hover {
-  background-color: #0056b3; /* Azul más oscuro en hover */
+  background-color: #0056b3; 
+}
+@media (max-width: 360px) {
+  .detalle-container {
+    padding: 10px;
+    max-width: 100%;
+  }
+
+  .detalle-container h2 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .detalle-container img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .detalle-container p {
+    font-size: 0.9rem;
+    margin: 8px 0;
+  }
+
+  .detalle-container button {
+    padding: 8px 16px;
+    font-size: 0.9rem
+  }
 }

@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/navbar/navbar';
 import Home from './pages/Home';
-import Seccion from './pages/Seccion';
 import Favoritos from './pages/Favoritos';
 import Detalle from './pages/Detalle';
 import Resultados from './pages/Resultados';
@@ -23,7 +22,6 @@ function App() {
       <main>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/Section/:id" component={Seccion} />
           <Route path="/Favoritos" component={Favoritos} />
           <Route path="/Detalle/:id" component={Detalle} />
           <Route path="/Populares" component={Populares} />

@@ -79,3 +79,22 @@
     color: #555;
     margin-top: 10px;
   }
+  @media (max-width: 360px) {
+    .favoritos-list {
+        padding: 10px;
+        gap: 10px; 
+    }
+  
+    .favoritos-card {
+        width: 100%; 
+        max-width: 150px; 
+        margin: 0 auto; 
+    }
+  
+    .peliculasFavoritosTitulo {
+        font-size: 24px; 
+    }
+  
+    .empty-favorites-message,
+    .empty-favorites-description {
+        font-size: 16px;}}

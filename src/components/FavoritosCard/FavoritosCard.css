@@ -59,3 +59,23 @@
     justify-content: center;
     font-size: 14px;
   }
+  @media (max-width: 360px) {
+    .favoritos-card {
+        width: 100%; 
+        max-width: 150px; 
+        margin: 0 auto;
+    }
+  
+    .favoritos-card-img {
+        width: 100px; 
+        height: auto; 
+    }
+  
+    .favoritos-card-title {
+        font-size: 14px; 
+    }
+  
+    .favoritos-card-button,
+    .favoritos-card-detail-button {
+        width: 90%; 
+        font-size: 12px }}
