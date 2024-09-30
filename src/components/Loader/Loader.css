@@ -2,7 +2,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
-   
 }
 
+@media (max-width: 360px) {
+    .cargando {
+        padding: 10px;
+    }
+}
