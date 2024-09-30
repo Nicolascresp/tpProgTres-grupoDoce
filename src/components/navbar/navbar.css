@@ -36,3 +36,36 @@
     align-items: center;
     margin-left: auto;
 }
+
+@media (max-width: 450px) {
+    .nav {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .nav li {
+        margin-right: 0;
+        padding: 10px 0;
+    }
+
+    .mainnav {
+        width: 100%;
+    }
+
+    .form {
+        width: 100%;
+        justify-content: center;
+        padding: 10px 0;
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
